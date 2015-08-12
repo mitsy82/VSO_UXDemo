@@ -84,6 +84,9 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AcceptTOSViewModel.cs" />
+    <Compile Include="CollectionSearchViewModel.cs" />
+    <Compile Include="DataModel.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Info.plist" />
