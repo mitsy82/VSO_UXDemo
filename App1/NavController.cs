@@ -44,5 +44,23 @@ namespace PopOver_Sample
 
            
         }
+        private void OnStartDownloadCommand()
+        {
+            if (this.DownloadVideoType == VideoType.VideoMarketplaceMovie || this.DownloadVideoType == VideoType.VideoMarketplaceEpisode)
+            {
+                string musicHubUrl = this.ThumbnailUrl; //((this.DownloadVideoType == VideoType.VideoMarketplaceMovie) ? string.Format(Constants.MusicHubImageUrlMovie, MainViewModel.Instance.AppSettings.CurrentRegionCultureString, this.Id) : string.Format(Constants.MusicHubImageUrlTV, MainViewModel.Instance.AppSettings.CurrentRegionCultureString, this.Id));
+                Dictionary<string, string> imageUrls = new Dictionary<string, string>();
+                imageUrls.Add("Wide", this.BackgroundImageUrl);
+                imageUrls.Add("Hub", musicHubUrl);
+                MainViewModel.Instance.CreateCacheTileImagesForHub(imageUrls, this.Id);
+
+                //Download Closed captions
+                if (this.ClosedCaptions != null && this.ClosedCaptions.Count > 0)
+                {
+                    DownloadClosedCaption();
+                }
+            }
+
+        }
 	}
 }
